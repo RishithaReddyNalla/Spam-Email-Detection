@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spam Email Detection</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; text-align: center; }
+        h1 { color: #333; }
+        textarea { width: 80%; height: 150px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        input[type="submit"] { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        input[type="submit"]:hover { background-color: #45a049; }
+        .result { margin-top: 20px; font-size: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Spam Email Detector</h1>
+    <form action="/predict" method="post">
+        <textarea name="message" placeholder="Enter your email text here..."></textarea><br><br>
+        <input type="submit" value="Detect Spam">
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            <p>Original Message: <strong>{{ original_message }}</strong></p>
+            <p>Prediction: <strong style="color: {% if prediction == 'SPAM' %}red{% else %}green{% endif %};">{{ prediction }}</strong></p>
+        </div>
+    {% endif %}
+</body>
+</html>
